@@ -1,12 +1,4 @@
-const colorMap = {
-  green: "#64d583",
-  blue: "#91a8f9",
-  orange: "#ee955e",
-  pink: "#ee92d7",
-  purple: "#aa8ef0",
-  yellow: "#f5d770",
-  default: "#64d583",
-};
+import { hexToString, removeColorClasses } from "./colorMap.js";
 
 const initialDecks = [
     {
@@ -99,19 +91,19 @@ function getDeckByID(decks, id) {
 }
 
 const deckTemplate = document.querySelector("#deck-template");
-const deckList = document.querySelector(".decks__list");
+const deckList = document.querySelector(".gallery__list");
 
 function createDeckEl(deckObj) {
   const deckEl = deckTemplate.content
-    .querySelector(".deck")
+    .querySelector(".card")
     .cloneNode(true);
 
-  const linkEl = deckEl.querySelector(".deck__link");
-  const titleEl = deckEl.querySelector(".deck__title");
-  const countEl = deckEl.querySelector(".deck__count");
-  const deleteBtn = deckEl.querySelector(".deck__delete-btn");
+  const linkEl = deckEl.querySelector(".card__link");
+  const titleEl = deckEl.querySelector(".card__title");
+  const countEl = deckEl.querySelector(".card__count");
+  const deleteBtn = deckEl.querySelector(".card__delete-btn");
 
-  linkEl.href = `#carousel/${deckObj.id}`;
+  linkEl.href = `#deck/${deckObj.id}`;
   titleEl.textContent = deckObj.name;
 
   const cardCount = deckObj.cards.length;
@@ -119,7 +111,7 @@ function createDeckEl(deckObj) {
 
   const color = hexToString(deckObj.color) || "default";
   removeColorClasses(deckEl);
-  deckEl.classList.add(`deck_color_${color}`);
+  deckEl.classList.add(`card_color_${color}`);
 
   deleteBtn.addEventListener("click", (evt) => {
     evt.preventDefault();

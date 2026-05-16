@@ -14,8 +14,7 @@
       content="study aids, flashcards, learning materials"
     />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./assets/vendor/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,29 +39,55 @@
 
     <main class="page__main-content" id="main-content">
 
-      <section class="decks" id="home">
-        <h2 class="decks__title">My Decks</h2>
+      <section class="gallery" id="home">
+        <h2 class="gallery__title">My Decks</h2>
 
         <div class="wrapping-row">
-          <ul class="decks__list wrapping-row__display-contents"></ul>
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
 
           <template id="deck-template">
-            <li class="deck">
-              <a class="deck__link" href="#"></a>
+            <li class="card">
+              <a class="card__link" href="#"></a>
 
-              <h3 class="deck__title"></h3>
+              <h3 class="card__title"></h3>
 
-              <div class="deck__row">
-                <p class="deck__count"></p>
+              <div class="card__row">
+                <p class="card__count"></p>
 
-                <button class="deck__delete-btn" type="button" aria-label="Delete this deck">
+                <button class="card__delete-btn" type="button" aria-label="Delete this deck">
                   <img src="assets/images/delete.svg" alt="" />
                 </button>
               </div>
             </li>
           </template>
 
-          <button class="decks__new-decks-btn" type="button">+ New Deck</button>
+          <button class="gallery__new-card-btn" type="button">+ New Deck</button>
+
+        </div>
+      </section>
+      
+      <section id="deck-view" class="gallery" hidden>
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+
+          <button class="gallery__practice-btn" type="button">Practice</button>
+        </div>
+
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+
+           <template id="card-template">
+            <li class="card">
+              <h3 class="card__title"></h3>
+
+              <div class="card__row">
+                <button type="button" aria-label="Flip card" class="card__btn card__btn_type_flip"></button>
+                <button type="button" aria-label="Delete card" class="card__btn card__btn_type_delete"></button>
+              </div>
+            </li>
+          </template>
+
+          <button type="button" class="gallery__new-card-btn">+ New Card</button>
         </div>
       </section>
 

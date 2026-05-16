@@ -1,0 +1,76 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gallery__title {
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 0 40px 0;
+}
+
+.gallery__list {
+  display: contents;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery__new-card-btn {
+  padding: 16px 24px;
+  font-weight: 700;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  color: #1a1a1a80;
+  border-radius: 20px;
+  border: none;
+  width: 325px;
+  height: 205px;
+  cursor: pointer;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.gallery__new-card-btn:hover {
+  opacity: 1;
+  color: #1a1a1a;
+  background-color: #c5c5c5;
+}
+
+.gallery__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.gallery__header .gallery__title {
+  margin: 0;
+}
+
+.gallery__practice-btn {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gallery__practice-btn:hover {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.16)
+  );
+  background-blend-mode: overlay;
+}
