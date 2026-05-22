@@ -43,8 +43,6 @@ function renderNotFoundView() {
     notFoundSection.style.display = "flex";
     notFoundSection.removeAttribute("hidden");
 
-    renderDecks(decks);
-
     mainContentEl.classList.remove("page__main-content_type_carousel");
 }
 
@@ -101,6 +99,8 @@ function renderRoute() {
 
   renderNotFoundView();
 }
+
+console.log('Decks data:', decks);
 
 window.addEventListener("hashchange", renderRoute);
 renderRoute();

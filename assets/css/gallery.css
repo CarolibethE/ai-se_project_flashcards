@@ -68,9 +68,9 @@
 }
 
 .gallery__practice-btn:hover {
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.16),
-    rgba(255, 255, 255, 0.16)
+  background: linear-gradient(0deg, #1A1A1A, #1A1A1A),
+linear-gradient(180deg, rgba(255, 255, 255, 0) 55.81%, rgba(255, 255, 255, 0.3) 100%);
   );
   background-blend-mode: overlay;
 }
+

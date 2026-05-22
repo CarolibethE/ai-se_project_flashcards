@@ -64,28 +64,6 @@ const initialDecks = [
 
 export { initialDecks };
 
-
-function stringToHex(colorName) {
-  const color = colorMap[colorName];
-  return color || colorMap.default;
-}
-
-function hexToString(hexValue) {
-  const colorString = Object.keys(colorMap).find((key) => {
-    return colorMap[key] === hexValue;
-  });
-
-  return colorString || null;
-}
-
-function removeColorClasses(element) {
-  [...element.classList].forEach((cls) => {
-    if (cls.includes("_color_")) {
-      element.classList.remove(cls);
-    }
-  });
-}
-
 function getDeckByID(decks, id) {
   return decks.find((deck) => deck.id === id);
 }
@@ -137,7 +115,6 @@ function renderDecks(decks) {
 }
 
 export {
-  stringToHex,
   hexToString,
   removeColorClasses,
   getDeckByID,
