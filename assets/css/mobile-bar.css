@@ -14,7 +14,7 @@
         display: none;
     }
 
-    .decks__new-decks-btn {
+    .gallery__new-card-btn {
     position: fixed;
     left: 20px;
     right: 20px;
@@ -62,22 +62,13 @@
     z-index: 10;
   }
 
-  .gallery__new-card-btn {
-    left: 20px;
-    right: 20px;
-
-    width: calc(100% - 40px);
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
   .gallery__practice-btn {
     right: 20px;
 
     width: calc(50% - 10px - 20px);
   }
 
-  .gallery__new-card-btn_location_deck-view {
+  .gallery__new-card-btn_location_card-view {
     left: 20px;
     right: auto;
 
