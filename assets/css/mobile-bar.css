@@ -1,0 +1,45 @@
+@media screen and (max-width: 627px) {
+    .page::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 200px;
+        background: linear-gradient ( 180deg, rgba( 236,236,0) 0%, #ececec 35%);
+        z-index: 5;
+    }
+
+    .page_no-mobile-bar::after {
+        display: none;
+    }
+
+    .decks__new-decks-btn {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 90px;
+    width: calc(100% - 40px);
+    max-width: 400px;
+    height: 52px;
+    margin: 0 auto;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .footer {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+  }
+
+  .page_no-mobile-bar .footer {
+    position: static;
+  }
+}

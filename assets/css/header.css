@@ -22,3 +22,11 @@
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
+@media screen and (max-width: 627px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

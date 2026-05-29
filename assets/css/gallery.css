@@ -74,3 +74,9 @@ linear-gradient(180deg, rgba(255, 255, 255, 0) 55.81%, rgba(255, 255, 255, 0.3) 
   background-blend-mode: overlay;
 }
 
+@media scrren and (max-width: 627px) {
+  .gallery__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}

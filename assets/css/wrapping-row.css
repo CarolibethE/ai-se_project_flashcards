@@ -7,3 +7,10 @@
 .wrapping-row__display-contents {
   display: contents;
 }
+
+@ media screen and (max-width: 627px) {
+  .wrappping-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

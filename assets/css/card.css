@@ -123,3 +123,11 @@
 .card__btn_type_flip {
   background-image: url("../images/flip.svg");
 }
+
+@media screen and (max-width: 627px) {
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 325/205;
+  }
+}

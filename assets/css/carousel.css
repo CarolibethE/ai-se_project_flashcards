@@ -16,6 +16,13 @@
   margin: 0;
 }
 
+@media screen and (max-width: 627px) {
+  .carousel__grid {
+    grid-template-areas: "card card card" "left flip left";
+    width: 100%; 
+  }
+}
+
 .carousel__card {
   width: 440px;
   height: 300px;
