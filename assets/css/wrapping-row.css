@@ -8,8 +8,8 @@
   display: contents;
 }
 
-@ media screen and (max-width: 627px) {
-  .wrappping-row {
+@media screen and (max-width: 627px) {
+  .wrapping-row {
     display: grid;
     grid-template-columns: 1fr;
   }
