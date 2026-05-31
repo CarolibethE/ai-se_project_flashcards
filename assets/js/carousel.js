@@ -72,4 +72,6 @@ function renderCarouselView(deck) {
   updateDisplay();
 }
 
+PageEl.classList.add("page_no-mobile-bar");
+
 export { getDeckIdFromHash, getCarouselTitleString, renderCarouselView };

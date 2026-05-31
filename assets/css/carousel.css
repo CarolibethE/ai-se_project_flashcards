@@ -23,6 +23,10 @@
   }
 }
 
+.carousel__grid {
+  display: grid;
+}
+
 .carousel__card {
   width: 440px;
   height: 300px;
@@ -34,6 +38,7 @@
   align-items: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   position: relative;
+  box-sizing:border-box;
 }
 
 .carousel__card-text {

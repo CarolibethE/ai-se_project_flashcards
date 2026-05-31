@@ -104,3 +104,5 @@ console.log('Decks data:', decks);
 
 window.addEventListener("hashchange", renderRoute);
 renderRoute();
+
+pageEl.classList.remove("page_no-mobile-bar");

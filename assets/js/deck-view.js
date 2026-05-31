@@ -53,4 +53,6 @@ function renderDeckView(deck) {
   deck.cards.forEach(renderCard);
 }
 
+pageEl.classList.remove("page_no-mobile-bar");
+
 export { renderDeckView };
