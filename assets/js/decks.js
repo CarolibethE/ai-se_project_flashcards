@@ -1,5 +1,5 @@
 import { hexToString, removeColorClasses } from "./colorMap.js";
-
+ 
 const initialDecks = [
     {
         id: "html",
@@ -61,59 +61,59 @@ const initialDecks = [
         ],
     },
 ];
-
+ 
 export { initialDecks };
-
+ 
 function getDeckByID(decks, id) {
   return decks.find((deck) => deck.id === id);
 }
-
+ 
 const deckTemplate = document.querySelector("#deck-template");
 const deckList = document.querySelector(".gallery__list");
-
+ 
 function createDeckEl(deckObj) {
   const deckEl = deckTemplate.content
     .querySelector(".card")
     .cloneNode(true);
-
+ 
   const linkEl = deckEl.querySelector(".card__link");
   const titleEl = deckEl.querySelector(".card__title");
   const countEl = deckEl.querySelector(".card__count");
   const deleteBtn = deckEl.querySelector(".card__delete-btn");
-
+ 
   linkEl.href = `#deck/${deckObj.id}`;
   titleEl.textContent = deckObj.name;
-
+ 
   const cardCount = deckObj.cards.length;
   countEl.textContent = `${cardCount} ${cardCount === 1 ? "card" : "cards"}`;
-
+ 
   const color = hexToString(deckObj.color) || "default";
   removeColorClasses(deckEl);
   deckEl.classList.add(`card_color_${color}`);
-
+ 
   deleteBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     deckEl.remove();
   });
-
+ 
   return deckEl;
 }
-
+ 
 function renderDeckEl(deckObj) {
   const deckEl = createDeckEl(deckObj);
   deckList.append(deckEl);
 }
-
+ 
 function clearDecks() {
   deckList.innerHTML = "";
 }
-
+ 
 function renderDecks(decks) {
   clearDecks();
   decks.forEach(renderDeckEl);
 }
-
+ 
 export {
   hexToString,
   removeColorClasses,

@@ -3,13 +3,13 @@
   flex-direction: column;
   gap: 20px;
 }
-
+ 
 .gallery__title {
   font-weight: 700;
   font-size: 40px;
   margin: 0 0 40px 0;
 }
-
+ 
 .gallery__list {
   display: contents;
   flex-wrap: wrap;
@@ -19,7 +19,7 @@
   padding: 0;
   list-style: none;
 }
-
+ 
 .gallery__new-card-btn {
   padding: 16px 24px;
   font-weight: 700;
@@ -37,24 +37,24 @@
   line-height: 1.2;
   margin: 0;
 }
-
+ 
 .gallery__new-card-btn:hover {
   opacity: 1;
   color: #1a1a1a;
   background-color: #c5c5c5;
 }
-
+ 
 .gallery__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
 }
-
+ 
 .gallery__header .gallery__title {
   margin: 0;
 }
-
+ 
 .gallery__practice-btn {
   padding: 16px 24px;
   border: none;
@@ -66,17 +66,9 @@
   font-weight: 700;
   cursor: pointer;
 }
-
+ 
 .gallery__practice-btn:hover {
   background: linear-gradient(0deg, #1A1A1A, #1A1A1A),
-  linear-gradient(180deg, rgba(255, 255, 255, 0) 55.81%, rgba(255, 255, 255, 0.3) 100%);
-
+linear-gradient(180deg, rgba(255, 255, 255, 0) 55.81%, rgba(255, 255, 255, 0.3) 100%);
   background-blend-mode: overlay;
-}
-
-@media screen and (max-width: 627px) {
-  .gallery__title {
-    font-size: 32px;
-    margin-bottom: 24px;
-  }
 }

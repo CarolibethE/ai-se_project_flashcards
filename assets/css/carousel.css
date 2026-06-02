@@ -7,7 +7,7 @@
   gap: 20px;
   position: relative;
 }
-
+ 
 .carousel__title {
   font-weight: 400;
   font-size: 14px;
@@ -15,18 +15,7 @@
   color: #1a1a1a80;
   margin: 0;
 }
-
-@media screen and (max-width: 627px) {
-  .carousel__grid {
-    grid-template-areas: "card card card" "left flip left";
-    width: 100%; 
-  }
-}
-
-.carousel__grid {
-  display: grid;
-}
-
+ 
 .carousel__card {
   width: 440px;
   height: 300px;
@@ -38,16 +27,15 @@
   align-items: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   position: relative;
-  box-sizing:border-box;
 }
-
+ 
 .carousel__card-text {
   font-weight: 700;
   font-size: 32px;
   color: #1a1a1a;
   text-align: center;
 }
-
+ 
 .carousel__controls {
   position: absolute;
   width: 608px;
@@ -60,7 +48,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+ 
 .carousel__btn {
   width: 44px;
   height: 44px;
@@ -75,27 +63,27 @@
   pointer-events: auto;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
+ 
 .carousel__btn:hover,
 .carousel__btn:focus {
   opacity: 1;
   transform: scale(1.05);
   outline: none;
 }
-
+ 
 .carousel__btn_disabled {
   opacity: 0.2;
   cursor: default;
   pointer-events: none;
   transform: none;
 }
-
+ 
 .carousel__flip {
   margin-top: 24px;
   display: flex;
   justify-content: center;
 }
-
+ 
 .carousel__btn_type_flip {
   width: 44px;
   height: 44px;
@@ -109,38 +97,38 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
   border: none;
 }
-
+ 
 .carousel__btn_type_flip:hover,
 .carousel__btn_type_flip:focus {
   opacity: 1;
   transform: scale(1.05);
   outline: none;
 }
-
+ 
 .carousel__card_color_green {
   background-color: #64d583;
 }
-
+ 
 .carousel__card_color_blue {
   background-color: #91a8f9;
 }
-
+ 
 .carousel__card_color_pink {
   background-color: #ee92d7;
 }
-
+ 
 .carousel__card_color_purple {
   background-color: #aa8ef0;
 }
-
+ 
 .carousel__card_color_orange {
   background-color: #ee955e;
 }
-
+ 
 .carousel__card_color_yellow {
   background-color: #f5d770;
 }
-
+ 
 .carousel__card_color_white {
   background-color: #fff;
 }

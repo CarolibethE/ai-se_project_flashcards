@@ -11,19 +11,19 @@
   color: #1a1a1a;
   position: relative;
 }
-
+ 
 .card__link {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
-
+ 
 .card__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+ 
 .card__title {
   font-weight: 700;
   font-size: 24px;
@@ -33,14 +33,14 @@
   justify-content: flex-start;
   flex-direction: column;
 }
-
+ 
 .card__count {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
   margin: 0;
 }
-
+ 
 .card__delete-btn {
   display: inline-flex;
   align-items: center;
@@ -54,45 +54,45 @@
   color: #1a1a1a;
   z-index: 2;
 }
-
+ 
 .card__delete-btn:hover,
 .card__delete-btn:focus {
   opacity: 1;
   outline: none;
 }
-
+ 
 .card_color_green {
   background-color: #64d583;
 }
-
+ 
 .card_color_blue {
   background-color: #91a8f9;
 }
-
+ 
 .card_color_pink {
   background-color: #ee92d7;
 }
-
+ 
 .card_color_purple {
   background-color: #aa8ef0;
 }
-
+ 
 .card_color_orange {
   background-color: #ee955e;
 }
-
+ 
 .card_color_yellow {
   background-color: #f5d770;
 }
-
+ 
 .card_color_gray {
   background-color: #cfcfcf;
 }
-
+ 
 .card_color_white {
   background-color: #fff;
 }
-
+ 
 .card__btn {
   display: inline-flex;
   align-items: center;
@@ -109,25 +109,17 @@
   background-position: center;
   background-size: contain;
 }
-
+ 
 .card__btn:hover,
 .card__btn:focus {
   opacity: 1;
   outline: none;
 }
-
+ 
 .card__btn_type_delete {
   background-image: url("../images/delete.svg");
 }
-
+ 
 .card__btn_type_flip {
   background-image: url("../images/flip.svg");
-}
-
-@media screen and (max-width: 627px) {
-  .card {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 325/205;
-  }
 }
