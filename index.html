@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash cards app</title>
+    <meta name="author" content="Carolibeth" />
+    <meta
+      name="description"
+      content="A flash card app designed to help students organize study material for a better way of understanding material"
+    />
+    <meta
+      name="keywords"
+      content="study aids, flashcards, learning materials"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+ 
+  <body class="page">
+    <header class="header">
+      <h1 class="header__title">
+        <a class="header__link" href="#home">Flash Cards</a>
+      </h1>
+ 
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#home">My Decks</a></li>
+          <li><a class="nav__link" href="#home">About</a></li>
+        </ul>
+      </nav>
+    </header>
+ 
+    <main class="page__main-content" id="main-content">
+ 
+      <section class="gallery" id="home">
+        <h2 class="gallery__title">My Decks</h2>
+ 
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+ 
+          <template id="deck-template">
+            <li class="card">
+              <a class="card__link" href="#"></a>
+ 
+              <h3 class="card__title"></h3>
+ 
+              <div class="card__row">
+                <p class="card__count"></p>
+ 
+                <button class="card__delete-btn" type="button" aria-label="Delete this deck">
+                  <img src="images/delete.svg" alt="" />
+                </button>
+              </div>
+            </li>
+          </template>
+ 
+          <button class="gallery__new-card-btn" type="button">+ New Deck</button>
+ 
+        </div>
+      </section>
+      
+      <section id="deck-view" class="gallery" hidden>
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+ 
+          <button class="gallery__practice-btn" type="button">Practice</button>
+        </div>
+ 
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+ 
+           <template id="card-template">
+            <li class="card">
+              <h3 class="card__title"></h3>
+ 
+              <div class="card__row">
+                <button type="button" aria-label="Flip card" class="card__btn card__btn_type_flip"></button>
+                <button type="button" aria-label="Delete card" class="card__btn card__btn_type_delete"></button>
+              </div>
+            </li>
+          </template>
+ 
+          <button type="button" class="gallery__new-card-btn gallery__new-card-btn_location_deck-view">+ New Card</button>
+        </div>
+      </section>
+ 
+       <section class="carousel" id="carousel" hidden>
+  <h2 class="carousel__title">HTML Tags Deck &middot; 1/10</h2>
+
+  <div class="carousel__grid">
+    <button
+      class="carousel__btn carousel__btn_type_left carousel__btn_disabled"
+      type="button"
+      aria-label="Go to previous card"
+    >
+      <img src="images/left.svg" alt="" />
+    </button>
+
+    <article class="carousel__card">
+      <p class="carousel__card-text">&lt;body&gt;&lt;/body&gt;</p>
+    </article>
+
+    <button
+      class="carousel__btn carousel__btn_type_right"
+      type="button"
+      aria-label="Next card"
+    >
+      <img src="images/right.svg" alt="" />
+    </button>
+
+    <button
+      class="carousel__btn carousel__btn_type_flip"
+      type="button"
+      aria-label="Flip card"
+    >
+      <img src="images/flip.svg" alt="" />
+    </button>
+  </div>
+</section>
+<section class="new-deck" id="new-deck-view" hidden>
+  <h2 class="new-deck__title">New Deck</h2>
+  </section> 
+      <section class="page__section" id="not-found" hidden>
+        <h2 class="not-found__title">404 Not Found</h2>
+        <p class="not-found__text">Sorry, the page you requested could not be found.</p>
+      </section>
+    </main>
+ 
+    <footer class="footer">
+      <p class="footer__text">&copy;2026 Carolibeth</p>
+    </footer>
+ 
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>

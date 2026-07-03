@@ -1,0 +1,145 @@
+@media screen and (max-width: 600px) {
+    .page {
+        padding: 20px 16px 32px;
+    } 
+
+    .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 325 / 205;
+    }
+
+    .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 100%), 353px);
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .page::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 200px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      #fff 35%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .page_no-mobile-bar::after {
+  display: none;
+  }
+
+
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 88px;
+    width: 100%;
+    max-width: calc(100% - 40px);
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+    font-weight: 600;
+    z-index: 20;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .gallery__title {
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0 0 40px 0;
+  }
+
+  .gallery__practice-btn {
+    right: 20px;
+    left: auto;
+    width: calc(50% - 30px);
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    left: 20px;
+    right: auto;
+    width: calc(50% - 30px);
+    margin: 0;
+    background-color: #cccccc;
+    color: #1a1a1a80;
+  }
+
+
+  .card__delete-btn {
+    z-index: 1;
+  }
+
+  .nav__links {
+    gap: 12px;
+  }
+
+  .header__title {
+    font-size: 32px;
+  }
+
+  .header__link {
+    font-size: 18px;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+  }
+
+  .page_location_carousel .footer {
+  position: static;
+  }
+
+
+ .carousel__grid {
+    grid-template-columns: 44px 1fr 44px;
+    grid-template-areas:
+      "card card card"
+      "left flip right";
+    width: calc(100% - 32px);
+    max-width: 440px;
+    gap: 24px 12px;
+  }
+
+  .carousel__card {
+    width: 353px;
+    height: 420px;
+    top: 210px;
+    left: 20px;
+    radius: 20px; 
+  }
+
+  .carousel__btn_type_left {
+    justify-self: end;
+  }
+
+  .carousel__btn_type_right {
+    justify-self: start;
+  }
+
+  .carousel__btn_type_flip {
+    justify-self: center;
+  }
+}
