@@ -15,6 +15,7 @@ const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
 const newDeckSection = document.querySelector("#new-deck-view");
 const newDeckBtn = document.querySelector("#home .gallery__new-card-btn");
 
+
 newDeckBtn.addEventListener("click", () => {
   window.location.hash = "#new-deck";
 });
@@ -178,3 +179,28 @@ console.log("Decks data:", decks);
 
 window.addEventListener("hashchange", renderRoute);
 renderRoute();
+
+const newDeckTextarea = document.querySelector("#new-deck-json");
+
+const exampleDeck = {
+  name: "My New Deck",
+  color: "green",
+  cards: [
+    {
+      question: "Question 1",
+      answer: "Answer 1"
+    },
+    {
+      question: "Question 2",
+      answer: "Answer 2"
+    }
+  ]
+};
+
+newDeckTextarea.value = JSON.stringify(exampleDeck, null, 2);
+
+const newDeckForm = document.querySelector("#new-deck-form");
+
+newDeckForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});

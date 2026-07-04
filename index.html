@@ -124,9 +124,96 @@
     </button>
   </div>
 </section>
-<section class="new-deck" id="new-deck-view" hidden>
-  <h2 class="new-deck__title">New Deck</h2>
-  </section> 
+<section class="new-deck-view" id="new-deck-view" hidden>
+  <h2 class="new-deck-view__title">New Deck</h2>
+
+  <form class="new-deck-view__form" id="new-deck-form">
+    <fieldset class="new-deck-view__fieldset">
+      <legend class="new-deck-view__legend">Choose a color</legend>
+
+      <label class="new-deck-view__color-label" for="green">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_green"
+          aria-label="Green"
+          type="radio"
+          name="deck-color"
+          value="#64D583"
+          id="green"
+          checked
+        />
+      </label>
+
+      <label class="new-deck-view__color-label" for="blue">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_blue"
+          aria-label="Blue"
+          type="radio"
+          name="deck-color"
+          value="#91A8F9"
+          id="blue"
+        />
+      </label>
+
+      <label class="new-deck-view__color-label" for="pink">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_pink"
+          aria-label="Pink"
+          type="radio"
+          name="deck-color"
+          value="#EE92D7"
+          id="pink"
+        />
+      </label>
+
+      <label class="new-deck-view__color-label" for="purple">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_purple"
+          aria-label="Purple"
+          type="radio"
+          name="deck-color"
+          value="#AA8EF0"
+          id="purple"
+        />
+      </label>
+
+      <label class="new-deck-view__color-label" for="orange">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_orange"
+          aria-label="Orange"
+          type="radio"
+          name="deck-color"
+          value="#EE955E"
+          id="orange"
+        />
+      </label>
+
+      <label class="new-deck-view__color-label" for="yellow">
+        <input
+          class="new-deck-view__color-input new-deck-view__color_type_yellow"
+          aria-label="Yellow"
+          type="radio"
+          name="deck-color"
+          value="#F5D770"
+          id="yellow"
+        />
+      </label>
+    </fieldset>
+
+    <label class="new-deck-view__json-label">
+      JSON
+      <textarea
+        class="new-deck-view__textarea"
+        id="new-deck-json"
+        name="deck-json"
+        placeholder="Paste deck JSON here"
+      ></textarea>
+    </label>
+
+    <button class="new-deck-view__submit-btn" type="submit" disabled>
+      Create Deck
+    </button>
+  </form>
+</section>
       <section class="page__section" id="not-found" hidden>
         <h2 class="not-found__title">404 Not Found</h2>
         <p class="not-found__text">Sorry, the page you requested could not be found.</p>
