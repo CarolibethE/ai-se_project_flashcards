@@ -17,7 +17,7 @@ const newDeckBtn = document.querySelector("#home .gallery__new-card-btn");
 
 
 newDeckBtn.addEventListener("click", () => {
-  window.location.hash = "#new-deck";
+  window.location.hash = "#new-deck-view";
 });
 
 practiceBtn.addEventListener("click", () => {
@@ -150,7 +150,7 @@ function renderRoute() {
     }
   }
 
-  if (hash == "new-deck-view") {
+  if (hash === "#new-deck-view" || hash === "#new-deck") {
     homeSection.style.display = "none";
     homeSection.setAttribute("hidden", "");
 
