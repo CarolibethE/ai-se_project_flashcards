@@ -1,6 +1,7 @@
 import { initialDecks, getDeckByID, renderDecks } from "./decks.js";
 import { getDeckIdFromHash, renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 const decks = initialDecks;
 let currentDeck = null;
@@ -168,6 +169,8 @@ function renderRoute() {
 
     pageEl.classList.remove("page_no-mobile-bar");
     pageEl.classList.remove("page_location_carousel");
+
+    disableSubmitBtn();
 
     return; 
   }
