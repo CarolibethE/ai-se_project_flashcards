@@ -1,9 +1,23 @@
-import { initialDecks, getDeckByID, renderDecks } from "./decks.js";
-import { getDeckIdFromHash, renderCarouselView } from "./carousel.js";
-import { renderDeckView } from "./deck-view.js";
-import { disableSubmitBtn } from "./new-deck-view.js";
+import {
+  fetchedDecks,
+  getDeckByID,
+  renderDecks,
+} from "./decks.js";
 
-const decks = initialDecks;
+import {
+  getDeckIdFromHash,
+  renderCarouselView,
+} from "./carousel.js";
+
+import { renderDeckView } from "./deck-view.js";
+
+import {
+  disableSubmitBtn,
+  showError,
+} from "./new-deck-view.js";
+
+import { getDecks, deleteDeck } from "./api.js";
+
 let currentDeck = null;
 
 const mainContentEl = document.querySelector("#main-content");
@@ -12,10 +26,15 @@ const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
-const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
 const newDeckSection = document.querySelector("#new-deck-view");
-const newDeckBtn = document.querySelector("#home .gallery__new-card-btn");
 
+const practiceBtn = deckViewSection.querySelector(
+  ".gallery__practice-btn"
+);
+
+const newDeckBtn = document.querySelector(
+  "#home .gallery__new-card-btn"
+);
 
 newDeckBtn.addEventListener("click", () => {
   window.location.hash = "#new-deck-view";
@@ -23,13 +42,40 @@ newDeckBtn.addEventListener("click", () => {
 
 practiceBtn.addEventListener("click", () => {
   if (currentDeck) {
-    window.location.hash = `#carousel/${currentDeck.id}`;
+    window.location.hash = `#carousel/${currentDeck._id}`;
   }
 });
+
+/**
+ * Deletes a deck from the server, shared array, and page.
+ *
+ * @param {Object} deck - The deck being deleted.
+ * @param {HTMLElement} deckEl - The rendered deck element.
+ */
+function handleDeleteDeck(deck, deckEl) {
+  deleteDeck(deck._id)
+    .then(() => {
+      deckEl.remove();
+
+      const deckIndex = fetchedDecks.findIndex(
+        (fetchedDeck) => fetchedDeck._id === deck._id
+      );
+
+      if (deckIndex !== -1) {
+        fetchedDecks.splice(deckIndex, 1);
+      }
+    })
+    .catch(() => {
+      showError("Unable to delete the deck. Please try again.");
+    });
+}
 
 function renderHomeView() {
   homeSection.style.display = "flex";
   homeSection.removeAttribute("hidden");
+
+  deckViewSection.style.display = "none";
+  deckViewSection.setAttribute("hidden", "");
 
   carouselSection.style.display = "none";
   carouselSection.setAttribute("hidden", "");
@@ -37,18 +83,15 @@ function renderHomeView() {
   notFoundSection.style.display = "none";
   notFoundSection.setAttribute("hidden", "");
 
-  deckViewSection.style.display = "none";
-  deckViewSection.setAttribute("hidden", "");
-
-  mainContentEl.classList.remove("page__main-content_type_carousel");
-
-  pageEl.classList.remove("page_no-mobile-bar");
-  pageEl.classList.remove("page_location_carousel");
-
   newDeckSection.style.display = "none";
   newDeckSection.setAttribute("hidden", "");
 
-  renderDecks(decks);
+  mainContentEl.classList.remove(
+    "page__main-content_type_carousel"
+  );
+
+  pageEl.classList.remove("page_no-mobile-bar");
+  pageEl.classList.remove("page_location_carousel");
 }
 
 function renderDeckPageView(deck) {
@@ -66,15 +109,17 @@ function renderDeckPageView(deck) {
   notFoundSection.style.display = "none";
   notFoundSection.setAttribute("hidden", "");
 
-  mainContentEl.classList.remove("page__main-content_type_carousel");
+  newDeckSection.style.display = "none";
+  newDeckSection.setAttribute("hidden", "");
+
+  mainContentEl.classList.remove(
+    "page__main-content_type_carousel"
+  );
 
   pageEl.classList.remove("page_no-mobile-bar");
   pageEl.classList.remove("page_location_carousel");
 
-  newDeckSection.style.display = "none";
-  newDeckSection.setAttribute("hidden", "");
-
-  renderDeckView(currentDeck);
+  renderDeckView(deck);
 }
 
 function renderCarouselPageView(deck) {
@@ -90,15 +135,43 @@ function renderCarouselPageView(deck) {
   notFoundSection.style.display = "none";
   notFoundSection.setAttribute("hidden", "");
 
-  mainContentEl.classList.add("page__main-content_type_carousel");
+  newDeckSection.style.display = "none";
+  newDeckSection.setAttribute("hidden", "");
+
+  mainContentEl.classList.add(
+    "page__main-content_type_carousel"
+  );
 
   pageEl.classList.add("page_no-mobile-bar");
   pageEl.classList.add("page_location_carousel");
 
-  newDeckSection.style.display = "none";
-  newDeckSection.setAttribute("hidden", "");
-
   renderCarouselView(deck);
+}
+
+function renderNewDeckView() {
+  homeSection.style.display = "none";
+  homeSection.setAttribute("hidden", "");
+
+  deckViewSection.style.display = "none";
+  deckViewSection.setAttribute("hidden", "");
+
+  carouselSection.style.display = "none";
+  carouselSection.setAttribute("hidden", "");
+
+  notFoundSection.style.display = "none";
+  notFoundSection.setAttribute("hidden", "");
+
+  newDeckSection.style.display = "block";
+  newDeckSection.removeAttribute("hidden");
+
+  mainContentEl.classList.remove(
+    "page__main-content_type_carousel"
+  );
+
+  pageEl.classList.remove("page_no-mobile-bar");
+  pageEl.classList.remove("page_location_carousel");
+
+  disableSubmitBtn();
 }
 
 function renderNotFoundView() {
@@ -111,19 +184,21 @@ function renderNotFoundView() {
   carouselSection.style.display = "none";
   carouselSection.setAttribute("hidden", "");
 
+  newDeckSection.style.display = "none";
+  newDeckSection.setAttribute("hidden", "");
+
   notFoundSection.style.display = "flex";
   notFoundSection.removeAttribute("hidden");
 
-  mainContentEl.classList.remove("page__main-content_type_carousel");
+  mainContentEl.classList.remove(
+    "page__main-content_type_carousel"
+  );
 
   pageEl.classList.add("page_no-mobile-bar");
   pageEl.classList.remove("page_location_carousel");
-
-  newDeckSection.style.display = "none";
-  newDeckSection.setAttribute("hidden", "");
 }
 
-function renderRoute() {
+function router() {
   const hash = window.location.hash || "#home";
 
   if (hash === "#home") {
@@ -131,9 +206,14 @@ function renderRoute() {
     return;
   }
 
+  if (hash === "#new-deck-view" || hash === "#new-deck") {
+    renderNewDeckView();
+    return;
+  }
+
   if (hash.startsWith("#deck/")) {
     const deckId = hash.split("/")[1];
-    const deck = getDeckByID(decks, deckId);
+    const deck = getDeckByID(deckId);
 
     if (deck) {
       renderDeckPageView(deck);
@@ -143,7 +223,7 @@ function renderRoute() {
 
   if (hash.startsWith("#carousel/")) {
     const deckId = getDeckIdFromHash(hash);
-    const deck = getDeckByID(decks, deckId);
+    const deck = getDeckByID(deckId);
 
     if (deck) {
       renderCarouselPageView(deck);
@@ -151,60 +231,21 @@ function renderRoute() {
     }
   }
 
-  if (hash === "#new-deck-view" || hash === "#new-deck") {
-    homeSection.style.display = "none";
-    homeSection.setAttribute("hidden", "");
-
-    deckViewSection.style.display = "none";
-    deckViewSection.setAttribute("hidden", "");
-
-    carouselSection.style.display = "none";
-    carouselSection.setAttribute("hidden", "");
-
-    notFoundSection.style.display = "none";
-    notFoundSection.setAttribute("hidden", "");
-
-    newDeckSection.style.display = "block";
-    newDeckSection.removeAttribute("hidden");
-
-    pageEl.classList.remove("page_no-mobile-bar");
-    pageEl.classList.remove("page_location_carousel");
-
-    disableSubmitBtn();
-
-    return; 
-  }
-
   renderNotFoundView();
 }
 
-console.log("Decks data:", decks);
+window.addEventListener("hashchange", router);
 
-window.addEventListener("hashchange", renderRoute);
-renderRoute();
-
-const newDeckTextarea = document.querySelector("#new-deck-json");
-
-const exampleDeck = {
-  name: "My New Deck",
-  color: "green",
-  cards: [
-    {
-      question: "Question 1",
-      answer: "Answer 1"
-    },
-    {
-      question: "Question 2",
-      answer: "Answer 2"
-    }
-  ]
-};
-
-newDeckTextarea.value = JSON.stringify(exampleDeck, null, 2);
-disableSubmitBtn();
-
-const newDeckForm = document.querySelector("#new-deck-form");
-
-newDeckForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      fetchedDecks.push(...decks);
+      renderDecks(decks, handleDeleteDeck);
+    })
+    .catch(() => {
+      showError("Can't fetch decks");
+    })
+    .finally(() => {
+      router();
+    });
 });
