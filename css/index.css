@@ -1,0 +1,14 @@
+@import url('../vendor/normalize.css');
+@import url('../css/page.css');
+@import url('../css/card.css');
+@import url('../css/not-found.css');
+@import url('../css/wrapping-row.css');
+@import url('../css/carousel.css');
+@import url('../css/header.css');
+@import url('../css/footer.css');
+@import url('../css/nav.css');
+@import url('../css/gallery.css');
+@import url('../css/mobile-bar.css');
+@import url("../css/new-deck-view.css");
+@import url("../css/modal.css");
+@import url("./about.css");

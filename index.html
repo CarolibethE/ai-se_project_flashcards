@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash cards app</title>
+    <meta name="author" content="Carolibeth" />
+    <meta
+      name="description"
+      content="A flash card app designed to help students organize study material."
+    />
+    <meta name="keywords" content="study aids, flashcards, learning materials" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <h1 class="header__title">
+        <a class="header__link" href="#home">Flash Cards</a>
+      </h1>
+
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#home">My Decks</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page__main-content" id="main-content">
+      <section class="gallery" id="home">
+        <h2 class="gallery__title">My Decks</h2>
+
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+
+          <template id="deck-template">
+            <li class="card">
+              <a class="card__link" href="#" aria-label="Open deck"></a>
+              <h3 class="card__title"></h3>
+
+              <div class="card__row">
+                <p class="card__count"></p>
+                <button
+                  class="card__delete-btn"
+                  type="button"
+                  aria-label="Delete this deck"
+                >
+                  <img src="images/delete.svg" alt="" />
+                </button>
+              </div>
+            </li>
+          </template>
+
+          <button class="gallery__new-card-btn" type="button">+ New Deck</button>
+        </div>
+      </section>
+
+      <section class="gallery" id="deck-view" hidden>
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+          <button class="gallery__practice-btn" type="button">Practice</button>
+        </div>
+
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+
+          <template id="card-template">
+            <li class="card">
+              <h3 class="card__title"></h3>
+
+              <div class="card__row">
+                <button
+                  type="button"
+                  aria-label="Flip card"
+                  class="card__btn card__btn_type_flip"
+                ></button>
+                <button
+                  type="button"
+                  aria-label="Delete card"
+                  class="card__btn card__btn_type_delete"
+                ></button>
+              </div>
+            </li>
+          </template>
+
+          <button
+            type="button"
+            class="gallery__new-card-btn gallery__new-card-btn_location_deck-view"
+          >
+            + New Card
+          </button>
+        </div>
+      </section>
+
+      <section class="carousel" id="carousel" hidden>
+        <h2 class="carousel__title"></h2>
+
+        <div class="carousel__grid">
+          <button
+            class="carousel__btn carousel__btn_type_left"
+            type="button"
+            aria-label="Go to previous card"
+          >
+            <img src="images/left.svg" alt="" />
+          </button>
+
+          <article class="carousel__card">
+            <p class="carousel__card-text"></p>
+          </article>
+
+          <button
+            class="carousel__btn carousel__btn_type_right"
+            type="button"
+            aria-label="Go to next card"
+          >
+            <img src="images/right.svg" alt="" />
+          </button>
+
+          <button
+            class="carousel__btn carousel__btn_type_flip"
+            type="button"
+            aria-label="Flip card"
+          >
+            <img src="images/flip.svg" alt="" />
+          </button>
+        </div>
+      </section>
+
+      <section class="new-deck-view" id="new-deck-view" hidden>
+        <h2 class="new-deck-view__title">New Deck</h2>
+
+        <form class="new-deck-view__form" id="new-deck-form">
+          <fieldset class="new-deck-view__fieldset">
+            <legend class="new-deck-view__legend">Pick the deck color</legend>
+
+            <label class="new-deck-view__color-label" for="green">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Green"
+                type="radio"
+                name="deck-color"
+                value="#64d583"
+                id="green"
+                checked
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_green"
+                aria-hidden="true"
+              ></span>
+            </label>
+
+            <label class="new-deck-view__color-label" for="blue">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Blue"
+                type="radio"
+                name="deck-color"
+                value="#91a8f9"
+                id="blue"
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_blue"
+                aria-hidden="true"
+              ></span>
+            </label>
+
+            <label class="new-deck-view__color-label" for="pink">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Pink"
+                type="radio"
+                name="deck-color"
+                value="#ee92d7"
+                id="pink"
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_pink"
+                aria-hidden="true"
+              ></span>
+            </label>
+
+            <label class="new-deck-view__color-label" for="purple">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Purple"
+                type="radio"
+                name="deck-color"
+                value="#aa8ef0"
+                id="purple"
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_purple"
+                aria-hidden="true"
+              ></span>
+            </label>
+
+            <label class="new-deck-view__color-label" for="orange">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Orange"
+                type="radio"
+                name="deck-color"
+                value="#ee955e"
+                id="orange"
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_orange"
+                aria-hidden="true"
+              ></span>
+            </label>
+
+            <label class="new-deck-view__color-label" for="yellow">
+              <input
+                class="new-deck-view__color-input"
+                aria-label="Yellow"
+                type="radio"
+                name="deck-color"
+                value="#f5d770"
+                id="yellow"
+              />
+              <span
+                class="new-deck-view__color new-deck-view__color_type_yellow"
+                aria-hidden="true"
+              ></span>
+            </label>
+          </fieldset>
+
+          <label class="new-deck-view__json-label" for="new-deck-json">
+            Write the JSON for the deck so that it matches the schema
+          </label>
+          <textarea
+            class="new-deck-view__textarea"
+            id="new-deck-json"
+            name="deck-json"
+            placeholder='{"name":"JavaScript Basics","cards":[{"question":"What is DOM?","answer":"Document Object Model"}]}'
+          ></textarea>
+
+          <button class="new-deck-view__submit-btn" type="submit" disabled>
+            Create the Deck
+          </button>
+        </form>
+      </section>
+
+      <section class="about" id="about" hidden>
+        <h2 class="about__title">About Flashcards</h2>
+        <p class="about__text">
+          Flashcards is a study app that allows users to create, review, and
+          practice custom decks.
+        </p>
+        <p class="about__text">Decks are represented using JSON in this format:</p>
+
+        <pre class="about__code-block"><code>{
+  "name": "JavaScript Basics",
+  "cards": [
+    {
+      "question": "What does DOM stand for?",
+      "answer": "Document Object Model"
+    }
+  ]
+}</code></pre>
+      </section>
+
+      <section class="page__section not-found" id="not-found" hidden>
+        <h2 class="not-found__title">404 Not Found</h2>
+        <p class="not-found__text">
+          Sorry, the page you requested could not be found.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&copy;2026 Carolibeth</p>
+    </footer>
+
+    <div class="modal" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal__container">
+        <button class="modal__close-btn" type="button" aria-label="Close modal">
+          &times;
+        </button>
+        <h2 class="modal__title" id="modal-title"></h2>
+        <p class="modal__message"></p>
+        <div class="modal__footer">
+          <button class="modal__btn modal__btn_type_secondary" type="button">
+            Cancel
+          </button>
+          <button class="modal__btn modal__btn_type_primary" type="button">
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
