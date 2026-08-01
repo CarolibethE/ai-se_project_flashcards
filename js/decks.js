@@ -29,15 +29,17 @@ function stringToHex(colorName) {
  * @returns {string|null} The color name or null if not found.
  */
 function hexToString(hexValue) {
-  const normalizeedHex = hexValue.toLowerCase();
-  const colorName = Object.keys(colorMap).find((key) => colorMap[key].toLowerCase() === normalizeedHex
-);
-
-    return colorName || null;
+  if (typeof hexValue !== "string") {
+    return null;
   }
 
-  return colorName || null;
+  const normalizedHex = hexValue.toLowerCase();
+  const colorName = Object.keys(colorMap).find(
+    (key) => colorMap[key].toLowerCase() === normalizedHex
+  );
 
+  return colorName || null;
+}
 
 /**
  * Remove color-related modifier classes from an element.
@@ -65,36 +67,35 @@ function getDeckByID(deckId) {
 
 /**
  * Create a home-view deck element.
- * 
+ *
  * @param {Object} deckData - The deck data.
  * @param {Function} handleDelete - A callback for delete actions.
  * @returns {HTMLElement} The completed deck element.
  */
-  function createDeckEl(deckData, handleDelete) {
-    const deckEl = deckTemplate.content.querSelector(".card").cloneNode(true);
-    
-    const linkEl = deckEl.querySelector(".card__link");
-    const titleEl = deckEl.querySelector(".card__title");
-    const countEl = deckEl.querySelector(".card__count");
-    const deleteBtn = deckEl.querySelector(".card__delete-btn");
-    const cardCount = deckData.cards.length;
-    const colrName =hexToString(deckData.color) || "default";
+function createDeckEl(deckData, handleDelete) {
+  const deckEl = deckTemplate.content.querySelector(".card").cloneNode(true);
 
-    linkEl.href = `#deck/${deckData._id}`;
-    titleEl.textContent = deckData.name;
-    countEl.textContent = `${cardCount} ${cardCount === 1 ? "card" : "cards"}`;
-    deckEl.classList.add(`card_color_${colorName}`);
+  const linkEl = deckEl.querySelector(".card__link");
+  const titleEl = deckEl.querySelector(".card__title");
+  const countEl = deckEl.querySelector(".card__count");
+  const deleteBtn = deckEl.querySelector(".card__delete-btn");
+  const cardCount = deckData.cards.length;
+  const colorName = hexToString(deckData.color) || "default";
 
-    deleteBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
+  linkEl.href = `#deck/${deckData._id}`;
+  titleEl.textContent = deckData.name;
+  countEl.textContent = `${cardCount} ${cardCount === 1 ? "card" : "cards"}`;
+  deckEl.classList.add(`card_color_${colorName}`);
 
-      handleDelete(deckData, deckEl);
-    });
+  deleteBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    return deckEl;
-  }
+    handleDelete(deckData, deckEl);
+  });
 
+  return deckEl;
+}
 
 /**
  * Render one deck into the home deck list.
@@ -104,7 +105,7 @@ function getDeckByID(deckId) {
  * @returns {void}
  */
 function renderDeckEl(deckData, handleDelete) {
-  deckList.append(createDeckEl(deckData,handleDelete));
+  deckList.append(createDeckEl(deckData, handleDelete));
 }
 
 /**
@@ -123,7 +124,7 @@ function clearDecks() {
  */
 function renderDecks(decks, handleDelete) {
   clearDecks();
-  decks.forEach((deck) => renderDeckEl(deck,handleDelete));
+  decks.forEach((deck) => renderDeckEl(deck, handleDelete));
 }
 
 export {

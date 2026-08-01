@@ -6,7 +6,6 @@ const deckTitle = deckViewSection.querySelector(".gallery__title");
 const cardList = deckViewSection.querySelector(".gallery__list");
 const cardTemplate = document.querySelector("#card-template");
 
-
 /**
  * Create one card element for the open deck view.
  *
@@ -17,9 +16,7 @@ const cardTemplate = document.querySelector("#card-template");
  * @returns {HTMLElement} The completed card element.
  */
 function createCardElement(cardData, deck) {
-  const cardEl = cardTemplate.textContent
-  .querySelector (".card")
-  .cloneNode(true);
+  const cardEl = cardTemplate.content.querySelector(".card").cloneNode(true);
 
   const titleEl = cardEl.querySelector(".card__title");
   const flipBtn = cardEl.querySelector(".card__btn_type_flip");
@@ -32,25 +29,24 @@ function createCardElement(cardData, deck) {
 
   flipBtn.addEventListener("click", () => {
     showingQuestion = !showingQuestion;
-    titleEl.textContent = showingQuestion
-      ? cardData.question
-      : cardData.answer;
+    titleEl.textContent = showingQuestion ? cardData.question : cardData.answer;
 
-      removeColorClasses(cardEl);
-      cardEl.classList.add(
-        showingQuestion ? `card_color_${colorName}` : `card_color_white`
-      );
-    });
-    
-  deleteBtn.addEventListener("click", () => { 
-   showConfirmation("Delete this card?",() => {
-    const cardIndex = deck.cards.indexOf(cardData);
-    if (cardIndex !== -1) {
-      deck.cards.splice(cardIndex, 1);
-    }
-    cardEl.remove();
-   });
+    removeColorClasses(cardEl);
+    cardEl.classList.add(
+      showingQuestion ? `card_color_${colorName}` : `card_color_white`
+    );
   });
+
+  deleteBtn.addEventListener("click", () => {
+    showConfirmation("Delete this card?", () => {
+      const cardIndex = deck.cards.indexOf(cardData);
+      if (cardIndex !== -1) {
+        deck.cards.splice(cardIndex, 1);
+      }
+      cardEl.remove();
+    });
+  });
+
   return cardEl;
 }
 
@@ -62,13 +58,13 @@ function createCardElement(cardData, deck) {
  * @param {Array<Object>} deck.cards - The deck cards array.
  * @returns {void}
  */
-  function renderDeckView(deck) {
-    deckTitle.textContent = deck.name;
-    cardList.innerHTML = "";
+function renderDeckView(deck) {
+  deckTitle.textContent = deck.name;
+  cardList.innerHTML = "";
 
-deck.cards.forEach((card) => {
-  cardList.append(createCardEl(card,deck));
-});
-  }
+  deck.cards.forEach((card) => {
+    cardList.append(createCardElement(card, deck));
+  });
+}
 
-  export { createCardEl, renderDeckView};
+export { createCardElement, renderDeckView };

@@ -54,6 +54,9 @@ const practiceBtn = deckViewSection.querySelector(
 const newDeckBtn = document.querySelector(
   "#home .gallery__new-card-btn"
 );
+const addCardBtn = deckViewSection.querySelector(
+  ".gallery__new-card-btn"
+);
 
 /**
  * Show one application section and hide all other routed sections.
@@ -113,24 +116,37 @@ function handleDeleteDeck(deck, deckEl) {
 }
 
 /**
- * Render the selected open deck view.
- * 
- * @param {Object} deck - The deck to render.
- * @returns {void}  
+ * Render the home view.
+ *
+ * @returns {void}
  */
- function renderDeckPageView(deck) {
+function renderHomeView() {
+  currentDeck = null;
+  showView(homeSection, "flex");
+  resetPageLayout();
+  pageEl.classList.remove("page_no-mobile-bar");
+  renderDecks(fetchedDecks, handleDeleteDeck);
+}
+
+/**
+ * Render the selected open deck view.
+ *
+ * @param {Object} deck - The deck to render.
+ * @returns {void}
+ */
+function renderDeckPageView(deck) {
   currentDeck = deck;
 
   showView(deckViewSection, "flex");
   resetPageLayout();
   pageEl.classList.remove("page_no-mobile-bar");
-  
+
   renderDeckView(deck);
 }
 
 /**
  * Render the practice carousel for a deck.
- * 
+ *
  * @param {Object} deck - The deck to render.
  * @returns {void}
  */
@@ -138,27 +154,27 @@ function renderCarouselPageView(deck) {
   currentDeck = deck;
 
   showView(carouselSection, "flex");
-  mainContentEl.classList.add(
-    "page__main-content_type_carousel"
-  );
+  mainContentEl.classList.add("page__main-content_type_carousel");
   pageEl.classList.add("page_no-mobile-bar", "page_location_carousel");
   renderCarouselView(deck);
 }
 
 /**
  * Render the new deck view.
- * 
+ *
  * @returns {void}
  */
-function renderNewDeckView() {
-  currentDeck = null;
+function renderNewDeckView(mode = "deck", deck = null) {
+  const activeDeck = deck || null;
+
+  currentDeck = activeDeck;
   showView(newDeckSection, "flex");
-  resetNewDeckForm();
+  resetNewDeckForm(mode, activeDeck);
 }
 
 /**
  * Render the about view.
- * 
+ *
  * @returns {void}
  */
 function renderAboutView() {
@@ -170,7 +186,7 @@ function renderAboutView() {
 
 /**
  * Render the 404 not found view.
- * 
+ *
  * @returns {void}
  */
 function renderNotFoundView() {
@@ -199,12 +215,22 @@ function router() {
   }
 
   if (hash === "#new-deck") {
-    renderNewDeckView();
+    renderNewDeckView("deck");
     return;
   }
 
+  if (hash.startsWith("#new-card/")) {
+    const deckId = hash.replace("#new-card/", "");
+    const deck = getDeckByID(deckId);
+
+    if (deck) {
+      renderNewDeckView("card", deck);
+      return;
+    }
+  }
+
   if (hash.startsWith("#deck/")) {
-    const deckId = hash.split("/")[1];
+    const deckId = hash.replace("#deck/", "");
     const deck = getDeckByID(deckId);
 
     if (deck) {
@@ -230,9 +256,27 @@ newDeckBtn.addEventListener("click", () => {
   window.location.hash = "#new-deck";
 });
 
-practiceBtn.addEventListener("click", () => {
-  if (currentDeck) {
-    window.location.hash = `#carousel/${currentDeck.id}`;
+addCardBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const deckId = currentDeck?._id || window.location.hash.replace("#deck/", "");
+
+  if (!deckId) {
+    showError("Open a deck first before adding a card.");
+    return;
+  }
+
+  window.location.hash = `#new-card/${deckId}`;
+});
+
+practiceBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const deckId = currentDeck?._id || window.location.hash.split("/")[1];
+
+  if (deckId) {
+    window.location.hash = `#carousel/${deckId}`;
   }
 });
 

@@ -68,8 +68,24 @@ function deleteDeck(deckId) {
   }).then(checkResponse);
 }
 
+/**
+ * Update an existing deck through the API.
+ *
+ * @param {string} deckId - The id of the deck to update.
+ * @param {Object} deckData - The deck data to update.
+ * @returns {Promise<Object>} A promise resolving with the updated deck.
+ */
+function updateDeck(deckId, deckData) {
+  return fetch(`${baseUrl}/decks/${deckId}`, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(deckData),
+  }).then(checkResponse);
+}
+
 export {
   getDecks,
   addDeck,
   deleteDeck,
+  updateDeck,
 };
