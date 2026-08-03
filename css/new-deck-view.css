@@ -6,9 +6,14 @@
 }
 
 .new-deck-view__title {
+  width: 100%;
+  max-width: 720px;
   margin: 0 0 32px;
-  font-size: 48px;
+  font: inter;
+  font-size: 40px;
   font-weight: 700;
+  line-height: 100%;
+  text-align: left;
 }
 
 .new-deck-view__form {

@@ -59,7 +59,7 @@ The project also helped me improve my understanding of reusable code, DOM manipu
 
 ## Deployed Site
 
-Check out [this site](https://carolibethe.github.io/ai-se_project_flashcards) on GitHub Pages.
+Check out [this site](https://carolibethe.github.io/ai-se_project_flashcards/) on GitHub Pages.
 
 ## Project Pitch Video
  
