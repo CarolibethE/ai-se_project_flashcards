@@ -24,10 +24,10 @@ function closeModal() {
  * @returns {void}
  */
 function showError(message) {
-    modalTitle.textContent = "Something went wrong";
+    modalTitle.textContent = "An Error has occurred";
     modalMessage.textContent = message;
     cancelBtn.hidden = true;
-    confirmBtn.textContent = "OK";
+    confirmBtn.textContent = "Dismiss";
     confirmHandler = null;
     modal.classList.add("modal_visible");
 }

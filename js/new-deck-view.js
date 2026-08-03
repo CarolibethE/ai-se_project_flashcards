@@ -88,7 +88,7 @@ function isFormValid() {
  * @returns {void}
  */
 function updateSubmitState() {
-  submitBtn.disabled = !isFormValid();
+  submitBtn.disabled = false;
 }
 
 function seedDefaultDeckData() {
